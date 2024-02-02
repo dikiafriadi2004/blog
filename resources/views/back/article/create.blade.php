@@ -73,7 +73,7 @@
                                                 </div>
                                                 <div class="input-area relative mt-2">
                                                     <label for="desc" class="form-label">Description</label>
-                                                    <textarea name="desc" id="desc" cols="30" rows="10" class="form-control"></textarea>
+                                                    <textarea name="desc" id="myeditor" cols="30" rows="10" class="form-control"></textarea>
                                                 </div>
                                                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                     <div class="input-area relative mt-2">
@@ -87,8 +87,8 @@
                                                     </div>
                                                     <div class="input-area relative mt-2">
                                                         <label for="publish_date" class=" form-label">Publish Date</label>
-                                                        <input class="form-control py-2 flatpickr flatpickr-input active"
-                                                            name="publish_date" id="publish_date" type="date">
+                                                        <input class="form-control py-2" name="publish_date"
+                                                            id="publish_date" type="date">
                                                     </div>
                                                 </div>
                                                 <div class="float-right mt-2">
@@ -125,6 +125,11 @@
                                                 <label for="img" class="form-label">Thumbnail (Max 2Mb)</label>
                                                 <input type="file" name="img" id="img" class="form-control">
                                             </div>
+
+                                            <div class="mt-2">
+                                                <img src="" alt="" class="img-thumbnail img-preview"
+                                                    width="150px">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -135,5 +140,36 @@
             </div>
         </div>
     </div>
+
+    @push('js')
+        <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+        <script>
+            var options = {
+                filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
+                clipboard_handleImage: false
+            }
+
+            CKEDITOR.replace('myeditor', options);
+
+            // img preview
+            $('#img').change(function() {
+                previewImage(this)
+            })
+
+            function previewImage(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader()
+
+                    reader.onload = function(e) {
+                        $('.img-preview').attr('src', e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0])
+                }
+            }
+        </script>
+    @endpush
 
 @endsection

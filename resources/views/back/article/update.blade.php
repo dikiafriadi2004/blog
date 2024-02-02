@@ -56,7 +56,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ url('article/'.$article->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('article/' . $article->id) }}" method="POST" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
 
@@ -77,20 +77,25 @@
                                                 </div>
                                                 <div class="input-area relative mt-2">
                                                     <label for="desc" class="form-label">Description</label>
-                                                    <textarea name="desc" id="desc" cols="30" rows="10" class="form-control">{{ old('desc', $article->desc) }}</textarea>
+                                                    <textarea name="desc" id="myeditor" cols="30" rows="10" class="form-control">{{ old('desc', $article->desc) }}</textarea>
                                                 </div>
                                                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                     <div class="input-area relative mt-2">
                                                         <label for="status" class="form-label">Status</label>
                                                         <select id="status" name="status" class="form-control">
-                                                            <option value="1" {{ $article->status == 1 ? 'selected' : null }}>Publish</option>
-                                                            <option value="0" {{ $article->status == 0 ? 'selected' : null }}>Private</option>
+                                                            <option value="1"
+                                                                {{ $article->status == 1 ? 'selected' : null }}>Publish
+                                                            </option>
+                                                            <option value="0"
+                                                                {{ $article->status == 0 ? 'selected' : null }}>Private
+                                                            </option>
                                                         </select>
                                                     </div>
                                                     <div class="input-area relative mt-2">
                                                         <label for="publish_date" class=" form-label">Publish Date</label>
-                                                        <input class="form-control py-2 flatpickr flatpickr-input active"
-                                                            name="publish_date" id="publish_date" type="date" value="{{ $article->publish_date }}">
+                                                        <input class="form-control py-2" name="publish_date"
+                                                            id="publish_date" type="date"
+                                                            value="{{ $article->publish_date }}">
                                                         {{-- <input class="form-control py-2 flatpickr flatpickr-input"
                                                             name="publish_date" id="publish_date" type="date" value="{{ $article->publish_date }}"> --}}
                                                     </div>
@@ -133,7 +138,8 @@
                                                 <label for="img" class="form-label">Thumbnail (Max 2Mb)</label>
                                                 <input type="file" name="img" id="img" class="form-control">
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/backend/'.$article->img) }}" alt="" width="150px">
+                                                    <img src="{{ asset('storage/backend/' . $article->img) }}"
+                                                        alt="" class="img-thumbnail img-preview" width="150px">
                                                 </div>
                                             </div>
                                         </div>
@@ -146,5 +152,36 @@
             </div>
         </div>
     </div>
+
+    @push('js')
+        <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+        <script>
+            var options = {
+                filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
+                clipboard_handleImage: false
+            }
+
+            CKEDITOR.replace('myeditor', options);
+
+            // img preview
+            $('#img').change(function() {
+                previewImage(this)
+            })
+
+            function previewImage(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader()
+
+                    reader.onload = function(e) {
+                        $('.img-preview').attr('src', e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0])
+                }
+            }
+        </script>
+    @endpush
 
 @endsection

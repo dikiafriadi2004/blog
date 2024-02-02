@@ -70,7 +70,7 @@
                                     <div
                                         class="card-text dark:text-slate-300 mt-4 space-y-4 leading-5 text-slate-600 text-sm border-b border-slate-100 dark:border-slate-700 pb-6">
                                         <p>
-                                            {{ $article->desc }}
+                                            {!! $article->desc !!}
                                         </p>
                                     </div>
                                     <div class="mt-6">
