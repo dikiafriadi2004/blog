@@ -43,7 +43,8 @@
                                 </button>
                             </header>
                             @if ($errors->any())
-                                <div class="py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-danger-500 text-white dark:bg-danger-500 dark:text-slate-300">
+                                <div
+                                    class="py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-danger-500 text-white dark:bg-danger-500 dark:text-slate-300">
                                     <div class="flex items-start space-x-3 rtl:space-x-reverse">
                                         <div class="flex-1">
                                             <ul>
@@ -57,13 +58,14 @@
                             @endif
 
                             @if (session('success'))
-                            <div class="py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-info-700 text-white dark:bg-info-700 dark:text-slate-300">
-                                <div class="flex items-start space-x-3 rtl:space-x-reverse">
-                                    <div class="flex-1">
-                                        {{ session('success') }}
+                                <div
+                                    class="py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-info-700 text-white dark:bg-info-700 dark:text-slate-300">
+                                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                        <div class="flex-1">
+                                            {{ session('success') }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endif
                             <div class="card-body px-6 pb-6">
                                 <div class="overflow-x-auto -mx-6 dashcode-data-table">
@@ -123,13 +125,17 @@
 
                                                                                 <li>
                                                                                     <a href="#"
-                                                                                        class="text-slate-600 dark:text-white block font-Inter font-normal px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white" data-bs-toggle="modal" data-bs-target="#categoryUpdateModal{{ $item->id }}">
+                                                                                        class="text-slate-600 dark:text-white block font-Inter font-normal px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#categoryUpdateModal{{ $item->id }}">
                                                                                         Edit
                                                                                     </a>
                                                                                 </li>
                                                                                 <li>
                                                                                     <a href="#"
-                                                                                        class="text-slate-600 dark:text-white block font-Inter font-normal px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"  data-bs-toggle="modal" data-bs-target="#categoryDeleteModal{{ $item->id }}">
+                                                                                        class="text-slate-600 dark:text-white block font-Inter font-normal px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#categoryDeleteModal{{ $item->id }}">
                                                                                         Delete
                                                                                     </a>
                                                                                 </li>

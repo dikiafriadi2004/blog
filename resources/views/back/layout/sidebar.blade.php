@@ -48,16 +48,18 @@
                     </span>
                 </a>
             </li>
+            @if (auth()->user()->role == 1)    
+                <li>
+                    <a href="{{ url('categories') }}" class="navItem {{ request()->is('categories*') ? 'active' : ''}}">
+                        <span class="flex items-center">
+                            <iconify-icon class="nav-icon" icon="tabler:category"></iconify-icon>
+                            <span>Categories</span>
+                        </span>
+                    </a>
+                </li>
+            @endif
             <li>
-                <a href="{{ url('categories') }}" class="navItem {{ request()->is('categories*') ? 'active' : ''}}">
-                    <span class="flex items-center">
-                        <iconify-icon class="nav-icon" icon="tabler:category"></iconify-icon>
-                        <span>Categories</span>
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="chat.html" class="navItem">
+                <a href="{{ url('users') }}" class="navItem {{ request()->is('users*') ? 'active' : ''}}">
                     <span class="flex items-center">
                         <iconify-icon class="nav-icon" icon="heroicons-outline:users"></iconify-icon>
                         <span>Users</span>

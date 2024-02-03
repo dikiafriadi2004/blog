@@ -172,7 +172,7 @@
                                                             </th>
 
                                                             <th scope="col" class=" table-th ">
-                                                                Created At
+                                                                View
                                                             </th>
 
                                                             <th scope="col" class=" table-th ">
@@ -189,7 +189,10 @@
                                                                 <td class="table-td">{{ $loop->iteration }}</td>
                                                                 <td class="table-td">{{ $item->title }}</td>
                                                                 <td class="table-td">{{ $item->Category->name }}</td>
-                                                                <td class="table-td">{{ $item->created_at }}</td>
+                                                                <td class="table-td">
+                                                                    {{ $item->views }} 
+                                                                    <iconify-icon icon="heroicons:eye-16-solid"></iconify-icon>
+                                                                </td>
                                                                 <td>
                                                                     <a href="{{ url('article/' . $item->id) }}"
                                                                         class="btn btn-sm btn-secondary">Detail</a>

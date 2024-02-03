@@ -1,9 +1,12 @@
 <?php
 
+use UniSharp\LaravelFilemanager\Lfm;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategoryController;
 use App\Http\Controllers\Back\DashboardController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Back\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +23,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
 
-Route::resource('/article', ArticleController::class);
-
-Route::resource('/categories', CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
-
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['guest']], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
+Route::get('/', function () {
+    return view('welcome');
 });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    Route::resource('/article', ArticleController::class);
+
+    Route::resource('/categories', CategoryController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('UserAccess:1');
+
+    Route::resource('/users', UserController::class);
+
+    Route::group(['prefix' => 'laravel-filemanager'], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
+});
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+
+require __DIR__ . '/auth.php';
