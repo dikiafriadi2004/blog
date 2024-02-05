@@ -23,7 +23,7 @@
                             <p class="card-text-blog">
                                 {{ Str::limit(strip_tags($item->desc), 200, '...') }}
                             </p>
-                            <span class="date-blog">{{ $item->created_at->format('d-m-y') }}</h3>
+                            <span class="date-blog">{{ $item->created_at->format('d M Y') }}</h3>
                         </div>
                     </div>
                 </div>  
