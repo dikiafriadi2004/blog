@@ -45,10 +45,10 @@
                             @foreach ($articles as $item)
                                 <div class="row col-lg-12 mb-30">
                                     <div class="post-terbaru">
-                                        <div class="col-lg-3">
+                                        <div class="col-lg-3 img-artikel-date">
                                             <img src="{{ asset('storage/backend/'.$item->img) }}" class="img-artikel-terbaru" alt="{{ $item->title }}">
                                             <div class="date-artikel">
-                                                <span class="date-artikel">{{ $item->created_at->format('d-m') }}</span>
+                                                <span class="date-artikel text-center">{{ $item->created_at->format('d M') }}</span>
                                             </div>
                                         </div>
                                         <div class="col-lg-9 ml-90 mb-10">
