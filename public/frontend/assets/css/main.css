@@ -443,6 +443,10 @@ hr {
     border-radius: 20px;
 }
 
+.post-terbaru {
+    margin-bottom: 30px;
+}
+
 .img-artikel-komentar {
     width: 77px;
     height: 77px;
@@ -462,7 +466,7 @@ hr {
 
 .date-artikel {
     position: absolute;
-    padding-left: 13px;
+    padding-left: 10px;
     padding-top: 7px;
     color: var(--navy);
     font-weight: var(--fwbold);
@@ -501,7 +505,8 @@ hr {
 }
 
 .img-blog {
-    width: auto;
+    width: 100%;
     height: 227px;
+    object-fit: cover;
     border-radius: 25px;
 }

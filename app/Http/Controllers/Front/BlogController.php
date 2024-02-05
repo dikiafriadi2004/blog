@@ -14,4 +14,12 @@ class BlogController extends Controller
             'articles' => Article::whereStatus(1)->latest()->paginate(9)
         ]);
     }
+
+    public function show($slug) 
+    {
+        return view('front.blog.show', [
+            'article' => Article::whereSlug($slug)->first(),
+            'articles' => Article::whereStatus(1)->latest()->paginate(5)
+        ]);
+    }
 }

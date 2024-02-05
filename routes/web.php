@@ -23,7 +23,8 @@ use App\Http\Controllers\Front\HomeController;
 
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/blog', [BlogController::class, 'index']);
+Route::get('blog', [BlogController::class, 'index']);
+Route::get('blog/{slug}', [BlogController::class, 'show']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);

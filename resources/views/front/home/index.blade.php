@@ -316,7 +316,7 @@
                             <img src="{{ asset('storage/backend/'.$item->img) }}" class="img-blog"
                                 alt="{{ $item->title }}">
                             <div class="card-body">
-                                <a href="{{ $item->slug }}" class="card-title-blog">{{ $item->title }}</a>
+                                <a href="{{ url('blog/'.$item->slug) }}" class="card-title-blog">{{ $item->title }}</a>
                                 <p class="card-text-blog">
                                     {{ Str::limit(strip_tags($item->desc), 200, '...') }}
                                 </p>
