@@ -450,6 +450,21 @@ hr {
     
 }
 
+.img-detail-blog {
+    width: 100%;
+    height: 408px;
+    object-fit: fill;
+    border-radius: 10px;
+}
+
+.category-detail a, .category-detail span {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: var(--fwsemibold);
+
+}
+
 .post-terbaru {
     margin-bottom: 30px;
 }

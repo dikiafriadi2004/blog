@@ -7,8 +7,8 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Blog</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Detail</li>
+                        <li class="breadcrumb-item"><a href="{{ url('blog') }}">Blog</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $article->title }}</li>
                     </ol>
                 </nav>
                 <!-- Article -->
@@ -16,10 +16,18 @@
                     <h3 class="medium-header mb-20">
                         {{ $article->title }}
                     </h3>
-                    <img src="/assets/images/images1.png" class="img-fluid mb-10" alt="">
+                    
+                    <img src="{{ asset('storage/backend/'.$article->img) }}" class="img-detail-blog mb-10" alt="">
                     <p class="primary-copy">
                         {!! $article->desc !!}
                     </p>
+
+                    <div class="category-detail mb-20">
+                        <span>Category: </span>
+                        <a href="{{ $article->Category->slug }}">
+                            <span class="mt-2">{{ $article->Category->name }}</span>
+                        </a>
+                    </div>
 
                     <!-- Share Sosmed -->
                     <div class="mt-30">
