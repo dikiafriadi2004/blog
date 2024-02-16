@@ -54,7 +54,9 @@
                                 <div class="row col-lg-12 mb-30">
                                     <div class="post-terbaru">
                                         <div class="col-lg-3 img-artikel-date">
-                                            <img src="{{ asset('storage/backend/'.$item->img) }}" class="img-artikel-terbaru" alt="{{ $item->title }}">
+                                            <div class="bg-opacity">
+                                                <img src="{{ asset('storage/backend/'.$item->img) }}" class="img-artikel-terbaru" alt="{{ $item->title }}">
+                                            </div>
                                             <div class="date-artikel">
                                                 <span class="date-artikel text-center">{{ $item->created_at->format('d M') }}</span>
                                             </div>
@@ -65,7 +67,6 @@
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
                                 <hr>
                             @endforeach
