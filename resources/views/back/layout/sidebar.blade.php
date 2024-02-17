@@ -57,15 +57,15 @@
                         </span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url('users') }}" class="navItem {{ request()->is('users*') ? 'active' : ''}}">
+                        <span class="flex items-center">
+                            <iconify-icon class="nav-icon" icon="heroicons-outline:users"></iconify-icon>
+                            <span>Users</span>
+                        </span>
+                    </a>
+                </li>
             @endif
-            <li>
-                <a href="{{ url('users') }}" class="navItem {{ request()->is('users*') ? 'active' : ''}}">
-                    <span class="flex items-center">
-                        <iconify-icon class="nav-icon" icon="heroicons-outline:users"></iconify-icon>
-                        <span>Users</span>
-                    </span>
-                </a>
-            </li>
             
         </ul>
     </div>
